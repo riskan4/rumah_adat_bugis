@@ -1,120 +1,167 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rumah Adat Bugis (Bola Ugi)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rumah Adat Bugis – Tur Virtual</title>
     <style>
+        /* Variabel warna utama untuk tema website */
+        :root {
+            --bg: #0b1020;         /* Warna latar belakang utama */
+            --ink: #e6edf3;        /* Warna teks utama */
+            --muted: #a9b4c2;      /* Warna teks sekunder/muted */
+            --accent: #22d3ee;     /* Warna aksen/tombol */
+            --panel: #111831;      /* Warna panel/kartu */
+        }
+
+        /* Semua elemen menggunakan box-sizing border-box agar padding dan border masuk hitungan ukuran */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Aturan dasar untuk body: font, warna, dan latar belakang */
         body {
-            font-family: "Poppins", sans-serif;
-            background-color: #f4f6f8;
-            color: #222;
             margin: 0;
-            padding: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+            color: var(--ink);
+            background: var(--bg);
         }
 
+        /* Header: bagian atas berisi gambar dan judul, dengan tinggi minimal 72vh */
         header {
-            background-color: #1a4d7a;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
+            position: relative;
+            min-height: 72vh;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
         }
 
-        header h1 {
-            margin-bottom: 10px;
-            font-size: 2em;
-        }
-
-        header h2 {
-            font-weight: normal;
-            font-size: 1.2em;
-            margin: 0;
-            opacity: 0.9;
-        }
-
-        main {
-            max-width: 900px;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .image-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .image-container img {
+        /* Gambar header: memenuhi seluruh area header dan diberi efek filter */
+        header img {
+            position: absolute;
+            inset: 0;
             width: 100%;
-            max-width: 700px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.05) saturate(1.05) brightness(.8);
         }
 
-        h3 {
-            color: #1a4d7a;
-            margin-top: 40px;
+        /* Overlay gelap di atas gambar header agar teks lebih terbaca */
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));
         }
 
+        /* Hero: kontainer utama judul dan deskripsi di header */
+        .hero {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            padding: 24px;
+        }
+
+        /* Judul utama di header */
+        .title {
+            font-size: clamp(28px, 5vw, 56px); /* Responsive font size */
+            line-height: 1.05;
+            margin: 0 0 10px;
+        }
+
+        /* Deskripsi singkat di bawah judul */
+        .lead {
+            font-size: clamp(14px, 2.2vw, 18px); /* Responsive font size */
+            color: #e8eef6;
+            max-width: 860px;
+        }
+
+        /* Kontainer tombol CTA (Call To Action) */
+        .cta {
+            margin-top: 20px;
+            display: inline-grid;
+        }
+
+        /* Tombol CTA: masuk ke tur virtual */
+        .cta a {
+            display: inline-block;
+            background: var(--accent);
+            color: #001018;
+            text-decoration: none;
+            font-weight: 800;
+            padding: 14px 22px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(34,211,238,.25);
+            transition: transform 0.2s;
+        }
+
+        /* Efek hover pada tombol CTA */
+        .cta a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Main: konten utama di bawah header */
+        main {
+            max-width: 1100px;
+            margin: 36px auto;
+            padding: 0 20px;
+        }
+
+        /* Card: panel/kartu untuk penjelasan tentang Baruga */
+        .card {
+            background: var(--panel);
+            border: 1px solid #1f2a44;
+            border-radius: 16px;
+            padding: 22px;
+        }
+
+        /* Judul section di dalam card */
+        h2 {
+            margin: 0 0 8px;
+        }
+
+        /* Paragraf di dalam card */
         p {
-            text-align: justify;
-            line-height: 1.7;
+            color: var(--muted);
+            line-height: 1.65;
         }
 
+        /* Footer: bagian bawah halaman */
         footer {
-            background-color: #1a4d7a;
-            color: white;
+            color: #95a3b6;
+            font-size: 12px;
             text-align: center;
-            padding: 15px;
-            margin-top: 50px;
-            font-size: 0.9em;
+            padding: 28px 16px;
         }
     </style>
-</head>
-
-<body>
+    </head>
+    <body>
     <header>
-        <h1>Rumah Adat Bugis (Bola Ugi)</h1>
-        <h2>Representasi Arsitektur Tradisional dan Nilai Etnomatematika</h2>
+        <!-- Place the image file at ./images/images_mapping.jpg or adjust the src below -->
+        <img src="assets\images\rumah00.png" alt="Rumah Adat Bugis – tampak atas beranotasi">
+        <div class="hero">
+        <h1 class="title">Rumah Adat Bugis</h1>
+        <p class="lead">Jelajahi keindahan <strong>Rumah Adat Bugis (Bola Ugi)</strong> dalam tur virtual 360°. Rumah panggung khas Sulawesi Selatan ini berdiri di atas <em>aliri</em> atau tiang-tiang kayu berbentuk tabung yang kokoh menopang bangunan utama. Arsitekturnya memadukan fungsi dan makna budaya: bagian bawah (kolong) digunakan untuk penyimpanan dan perlindungan dari banjir, bagian tengah sebagai ruang kehidupan keluarga, dan bagian atas (atap segitiga) melambangkan hubungan spiritual dengan Tuhan. Tata ruangnya bersifat simetris dan proporsional, mencerminkan keseimbangan antara manusia, alam, dan nilai-nilai Bugis seperti <em>siri’</em> (harga diri) serta <em>pangngadereng</em> (tata moral dan sosial).
+        </p>
+         <div class="cta"><a href="index.html">Masuk ke Tur Virtual</a></div>
+        </div>
     </header>
 
     <main>
-        <div class="image-container">
-            <!-- Pastikan path gambar benar: assets/images/rumah00.png -->
-            <img src="assets/images/rumah00.png" alt="Rumah Adat Bugis">
-        </div>
-
-        <h3>Pendahuluan</h3>
-        <p>
-            <strong>Rumah Adat Bugis</strong> atau <em>Bola Ugi</em> merupakan rumah panggung tradisional 
-            khas masyarakat Bugis di Sulawesi Selatan. Rumah ini berdiri di atas tiang-tiang kayu berbentuk 
-            tabung (silinder) yang disebut <em>aliri</em>, berfungsi menopang bangunan agar kokoh dan terlindung 
-            dari banjir serta kelembapan tanah. Arsitekturnya terbagi atas tiga bagian utama: 
-            <em>kolong</em> sebagai ruang bawah yang melambangkan dunia bawah, 
-            <em>badan rumah</em> sebagai pusat kehidupan manusia, dan 
-            <em>atap segitiga</em> yang menjulang sebagai simbol spiritualitas dan hubungan manusia dengan Tuhan.
+        <section class="card">
+        <h2>Tentang Rumah Adat Bugis (Bola Ugi)</h2>
+        <p><strong>Rumah Adat Bugis</strong> atau <em>Bola Ugi</em> merupakan rumah panggung tradisional masyarakat Bugis di Sulawesi Selatan yang menggambarkan perpaduan antara fungsi, estetika, dan nilai budaya. Rumah ini berdiri di atas <strong>tiang-tiang kayu berbentuk tabung (silinder)</strong> yang disebut <em>aliri</em>, berfungsi menopang badan rumah agar kokoh, menjaga sirkulasi udara, serta melindungi dari banjir dan kelembapan tanah.
         </p>
-
-        <p>
-            Rumah ini mencerminkan pemikiran matematis dan nilai budaya masyarakat Bugis. 
-            Bentuk <strong>tabung</strong> pada tiang, <strong>segitiga</strong> pada atap, dan <strong>persegi panjang</strong> 
-            pada badan rumah menunjukkan penerapan konsep <em>geometri ruang</em> dan <em>simetri</em> 
-            yang berpadu dengan filosofi kehidupan. Nilai-nilai seperti <em>siri’</em> (harga diri) 
-            dan <em>pangngadereng</em> (tata moral dan sosial) tercermin dalam keseimbangan proporsi 
-            dan struktur rumah ini, menjadikannya bukan sekadar tempat tinggal, tetapi juga 
-            simbol keharmonisan manusia dengan alam dan Sang Pencipta.
+        <p>Secara arsitektural, rumah Bugis terbagi atas tiga bagian utama yang melambangkan pandangan kosmologis kehidupan manusia: bagian bawah (kolong) melambangkan dunia bawah atau tempat hewan dan roh leluhur, bagian tengah (badan rumah) sebagai dunia manusia dan pusat aktivitas, serta bagian atas (atap) melambangkan dunia atas atau spiritualitas. <strong>Atapnya berbentuk segitiga</strong> tajam sebagai simbol hubungan manusia dengan Tuhan, sedangkan bentuk badan rumah yang simetris menggambarkan keseimbangan sosial dan keteraturan hidup.
         </p>
-
-        <p>
-            Pada halaman berikutnya, Anda dapat memasuki <strong>tur virtual 360° Rumah Adat Bugis</strong> 
-            untuk menjelajahi struktur arsitektur, pola geometri, dan makna filosofis di setiap bagiannya.
+        <p>Dalam konteks <em>etnomatematika</em>, struktur rumah Bugis memperlihatkan penerapan konsep geometri ruang seperti <strong>tabung</strong> pada tiang, <strong>segitiga</strong> pada atap, dan <strong>persegi panjang</strong> pada badan rumah. Setiap bentuk memiliki nilai fungsional sekaligus makna filosofis. Tiang melambangkan penyangga kehidupan, sedangkan keseimbangan proporsi antara tinggi, panjang, dan lebar rumah mencerminkan keharmonisan antara manusia, alam, dan Sang Pencipta — sejalan dengan nilai budaya Bugis seperti <em>siri’</em> (harga diri) dan <em>pangngadereng</em> (tata nilai sosial).
         </p>
+        </section>
     </main>
 
+
     <footer>
-        © 2025 — Etnomatematika Rumah Adat Bugis | Universitas Negeri Makassar
+        © 2025 · Tur Virtual Rumah Adat Baruga · Dibangun dengan Pannellum 360°
     </footer>
 </body>
 </html>
