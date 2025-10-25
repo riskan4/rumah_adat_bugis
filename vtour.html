@@ -1,46 +1,60 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tur 360° Rumah Adat Bugis (Bola Ugi)</title>
+
+  <!-- Pannellum -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
   <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-  <style>
-    body{margin:0;background:#0b1f33;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue","Noto Sans",Arial}
-    header{color:#fff;text-align:center;padding:18px 12px}
-    header h1{margin:0 0 6px;font-size:1.4rem}
-    header p{margin:0;opacity:.85}
-    #panorama{width:100%;height:70vh;max-height:820px}
-    .bar{display:flex;gap:10px;justify-content:center;align-items:center;color:#cfe6ff;padding:12px}
-    .btn{
-      appearance:none;border:0;border-radius:10px;padding:10px 14px;background:#1a4d7a;color:#fff;
-      font-weight:600;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25)
-    }
-    .btn:hover{background:#22639d}
-    .legend{font-size:.9rem;opacity:.9}
-  </style>
+
+  <!-- Gaya tur (mirip struktur contoh dosen) -->
+  <link rel="stylesheet" href="css/vtour.css">
 </head>
 <body>
-  <header>
-    <h1>Tur 360° Rumah Adat Bugis (Bola Ugi)</h1>
-    <p>Ayo Jelajahi Rumah Adat Bugis, melalui 11 panorama.</p>
-  </header>
 
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <a href="index.html" class="go-home">← Kembali ke Beranda</a>
+    <h3 class="page-title">Pannellum Virtual Tour — Rumah Adat Bugis</h3>
+    <div class="top-bar__actions">
+      <button class="minimap-btn" onclick="showMinimap()">Tampilkan Minimap</button>
+      <button id="toggleDragBtn" class="minimap-btn">Nonaktifkan Drag</button>
+    </div>
+  </div>
+
+  <!-- MODAL MINIMAP -->
+  <div id="minimapModal" class="minimap-modal" onclick="hideMinimap()">
+    <img src="assets/images/minimap.jpg" alt="Minimap Virtual Tour" class="minimap-img">
+  </div>
+
+  <!-- VIEWER -->
   <div id="panorama"></div>
 
-  <div class="bar">
-    <button class="btn" onclick="viewer.loadScene('scene01')">Mulai dari Scene 1</button>
-    <span class="legend">Tip: klik hotspot untuk pindah antar-ruang</span>
+  <!-- STATIC SCENE BUTTONS (01–11) -->
+  <div class="scenes">
+    <button onclick="viewer.loadScene('scene01')">01</button>
+    <button onclick="viewer.loadScene('scene02')">02</button>
+    <button onclick="viewer.loadScene('scene03')">03</button>
+    <button onclick="viewer.loadScene('scene04')">04</button>
+    <button onclick="viewer.loadScene('scene05')">05</button>
+    <button onclick="viewer.loadScene('scene06')">06</button>
+    <button onclick="viewer.loadScene('scene07')">07</button>
+    <button onclick="viewer.loadScene('scene08')">08</button>
+    <button onclick="viewer.loadScene('scene09')">09</button>
+    <button onclick="viewer.loadScene('scene10')">10</button>
+    <button onclick="viewer.loadScene('scene11')">11</button>
   </div>
 
   <script>
-    // Template hotspot navigasi
+    // ---------- Helper hotspot ----------
     function navHotspot(yaw, pitch, text, target) {
       return { yaw, pitch, type: "scene", text, sceneId: target, targetYaw: 0, targetPitch: 0 };
     }
 
-    const viewer = pannellum.viewer('panorama', {
+    // ---------- Inisialisasi Pannellum ----------
+    var viewer = pannellum.viewer('panorama', {
       "default": {
         "firstScene": "scene01",
         "author": "Kelompok Bone — Rumah Adat Bugis",
@@ -52,8 +66,7 @@
         "pitch": 0,
         "yaw": 0,
         "showFullscreenCtrl": true,
-        "showZoomCtrl": true,
-        "autoRotate": 0
+        "showZoomCtrl": true
       },
 
       "scenes": {
@@ -98,9 +111,9 @@
           "type": "equirectangular",
           "panorama": "assets/360_images/image4.jpg",
           "hotSpots": [
-            navHotspot(-170, 0, "Ke Ruang Tamu (Scene 3)", "scene03"),
-            navHotspot(10, 0, "Ke Kamar Depan (Scene 5)", "scene05"),
-            navHotspot(45, -5, "Ke Koridor Belakang (Scene 6)", "scene06")
+            navHotspot(90, 0, "Ke Tangga Depan (Scene 2)", "scene02"),
+            navHotspot(100, -5, "Ke Kolom Tengah (Scene 3)", "scene03"),
+            navHotspot(10, 5, "Naik Ke Pintu Belakang (Scene 5)", "scene05")
           ]
         },
 
@@ -110,8 +123,8 @@
           "type": "equirectangular",
           "panorama": "assets/360_images/image5.jpg",
           "hotSpots": [
-            navHotspot(-160, 0, "Kembali ke Ruang Keluarga (Scene 4)", "scene04"),
-            navHotspot(25, -2, "Ke Koridor (Scene 6)", "scene06")
+            navHotspot(5, -50, "Tangga Belakang (Scene 4)", "scene04"),
+            navHotspot(-90, -20, "Ke Dapur (Scene 6)", "scene06")
           ]
         },
 
@@ -188,6 +201,48 @@
         }
       }
     });
+
+    // ---------- Minimap modal ----------
+    function showMinimap(){ document.getElementById('minimapModal').classList.add('active'); }
+    function hideMinimap(){ document.getElementById('minimapModal').classList.remove('active'); }
+
+    // ---------- Mode baca koordinat (toggle drag) ----------
+    const panoramaEl = document.getElementById('panorama');
+    const toggleBtn = document.getElementById('toggleDragBtn');
+    const coordDiv = document.createElement('div');
+
+    coordDiv.className = 'coord-hint';
+    coordDiv.textContent = 'Klik panorama untuk koordinat (saat drag nonaktif)';
+    document.body.appendChild(coordDiv);
+
+    let dragEnabled = true;
+    const viewerContainer = typeof viewer.getContainer === 'function' ? viewer.getContainer() : panoramaEl;
+
+    function showCoords(e){
+      const c = viewer.mouseEventToCoords(e);
+      if (c && Number.isFinite(c.yaw) && Number.isFinite(c.pitch)) {
+        coordDiv.textContent = `Yaw: ${c.yaw.toFixed(2)}, Pitch: ${c.pitch.toFixed(2)}`;
+      }
+    }
+
+    function disableDrag(){
+      dragEnabled = false;
+      viewerContainer.style.cursor = 'pointer';
+      viewerContainer.addEventListener('click', showCoords, true);
+      toggleBtn.textContent = 'Aktifkan Drag';
+    }
+
+    function enableDrag(){
+      dragEnabled = true;
+      viewerContainer.style.cursor = 'grab';
+      viewerContainer.removeEventListener('click', showCoords, true);
+      toggleBtn.textContent = 'Nonaktifkan Drag';
+      coordDiv.textContent = 'Klik panorama untuk koordinat (saat drag nonaktif)';
+    }
+
+    toggleBtn.onclick = () => dragEnabled ? disableDrag() : enableDrag();
+    enableDrag(); // set awal
   </script>
+
 </body>
 </html>
