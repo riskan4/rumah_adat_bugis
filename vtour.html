@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pannellum Virtual Tour — Rumah Adat Bugis (Bola Ugi)</title>
+  <title>Virtual Tour — Rumah Adat Bugis (Bola Ugi)</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
   <link rel="stylesheet" href="style/vtour.css">
   <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
@@ -12,7 +12,7 @@
 <body>
   <div class="top-bar">
     <a href="index.html" class="go-home">← Kembali ke Beranda</a>
-    <h3 class="page-title">Pannellum Virtual Tour — Rumah Adat Bugis (Bola Ugi)</h3>
+    <h3 class="page-title">Virtual Tour — Rumah Adat Bugis (Bola Ugi)</h3>
     <div class="top-bar__actions">
       <button class="minimap-btn" onclick="showMinimap()">Tampilkan Minimap</button>
       <button id="toggleDragBtn" class="minimap-btn">Nonaktifkan Drag</button>
@@ -21,7 +21,7 @@
 
   <!-- Modal Minimap -->
   <div id="minimapModal" class="minimap-modal" onclick="hideMinimap()">
-    <img src="assets/images/minimap.jpg" alt="Minimap Virtual Tour" class="minimap-img">
+    <img src="assets/images/minimap_img.jpg" alt="Minimap Virtual Tour" class="minimap-img">
   </div>
 
   <div id="panorama"></div>
@@ -60,7 +60,17 @@
               "type": 
               "scene", 
               "sceneId": "s1", 
-              "text": "Ke Tangga Depan" }
+              "text": "Ke Tangga Depan" },
+            { 
+              "pitch": 4.19,
+              "yaw": 14.25,
+              "type": "info",
+              "text": "Lampu pada rumah adat Bugis berfungsi sebagai penerangan halaman dan area tangga pada malam hari. Selain memberi cahaya untuk keamanan dan aktivitas, lampu juga menjadi simbol penerang kehidupan dan keharmonisan keluarga, sejalan dengan nilai budaya Bugis yang menjunjung keteraturan dan keseimbangan."},
+            {
+              "pitch": 4.55,
+              "yaw": 21.44,
+              "type": "info",
+              "text": "Papan Informasi Rumah Adat Bugis — penanda lokasi di kawasan Benteng Somba Opu. Baca selengkapnya di: https://id.wikipedia.org/wiki/Benteng_Somba_Opu"}
           ]
         },
         "s1": {
@@ -228,7 +238,7 @@
               "pitch": -1.93, 
               "yaw": -0.34, 
               "type": "scene", 
-              "sceneId": "s2", 
+              "sceneId": "s10", 
               "text": "Ke Pintu Depan" },
             { 
               "pitch": -15.40, 
