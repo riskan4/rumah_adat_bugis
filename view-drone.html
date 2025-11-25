@@ -1,68 +1,157 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Drone - Rumah Adat Bugis</title>
-    <link rel="stylesheet" href="style/view-drone.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Drone Rumah Adat Bugis</title>
+  <link rel="stylesheet" href="style/view-drone.css">
 </head>
-
 <body>
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="back-home">← Kembali ke Beranda</a>
+      <div>
+        <h1>Video Drone Rumah Adat Bugis</h1>
+        <p class="muted">
+          Putar, amati proporsi, simetri, dan struktur geometri pada <em>Bola Ugi</em> dari sudut pandang udara.
+        </p>
+      </div>
+    </div>
+  </header>
 
-    <a href="index.html" class="back-btn">← Kembali</a>
-
-    <section class="main-section">
-        <h1>Pratinjau Utama</h1>
-
-        <div class="video-wrapper">
-            <video id="mainVideo" controls>
-                <source src="assets\videos\drone_main_kualitas_rendah.mp4" type="video/mp4">
-                Browser Anda tidak mendukung pemutar video.
-            </video>
+  <main class="shell">
+    <section class="content">
+      <!-- PRATINJAU UTAMA -->
+      <section class="video-main-section">
+        <h2>Pratinjau Utama</h2>
+        <div class="video-main-wrapper">
+          <video
+            id="mainVideo"
+            class="video-main"
+            controls
+            playsinline
+            poster="assets\images\ifotomain.png">
+            <source src="assets\videos\drone_main_kualitas_rendah.mp4" type="video/mp4">
+            Browser Anda tidak mendukung pemutar video HTML5.
+          </video>
         </div>
+      </section>
 
+      <!-- VIDEO LAINNYA -->
+      <section class="video-thumbs-section">
         <h2>Video Lainnya</h2>
-
-        <div class="thumb-container">
-
-            <!-- GANTI NAMA FILE SESUAI VIDEO ANDA -->
-            <video class="thumb" onclick="changeVideo('assets/videos/drone2n.mp4')" muted>
-                <source src="assets\videos\drone2n.mp4" type="video/mp4">
-            </video>
-
-            <video class="thumb" onclick="changeVideo('assets/videos/drone3n.mp4')" muted>
-                <source src="assets\videos\drone3n.mp4" type="video/mp4">
-            </video>
-
-            <video class="thumb" onclick="changeVideo('assets/videos/drone4n.mp4')" muted>
-                <source src="assets\videos\drone4n.mp4" type="video/mp4">
-            </video>
-
-            <video class="thumb" onclick="changeVideo('assets/videos/drone5n.mp4')" muted>
-                <source src="assets\videos\drone5n.mp4" type="video/mp4">
-            </video>
-
-            <video class="thumb" onclick="changeVideo('assets/videos/drone6n.mp4')" muted>
-                <source src="assets\videos\drone6n.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <h2>Keterangan</h2>
-
-        <p class="desc">
-            Video drone ini digunakan untuk mendukung pembelajaran etnomatematika: 
-            mengamati proporsi, simetri, dan struktur geometris pada rumah adat Bugis.
+        <p class="thumbs-note">
+          Pilih salah satu video di bawah untuk diputar sebagai pratinjau utama.
         </p>
 
+        <div class="thumbs-grid">
+          <!-- Thumb 1 -->
+          <button class="thumb-card"
+                  type="button"
+                  data-src="assets\videos\drone2n.mp4"
+                  data-poster="assets/images/drone1_poster.jpg">
+            <div class="thumb-video-frame">
+              <video class="thumb-video" muted playsinline preload="metadata"
+                     poster="assets\images\itampak_mundur_ke_atas2.png">
+                <source src="assets\videos\drone2n.mp4" type="video/mp4">
+              </video>
+            </div>
+            <span class="thumb-label">Tampak Mundur Ke Atas</span>
+          </button>
+
+          <!-- Thumb 2 -->
+          <button class="thumb-card"
+                  type="button"
+                  data-src="assets\videos\drone3n.mp4"
+                  data-poster="assets\images\itampak_maju_depan_3.png">
+            <div class="thumb-video-frame">
+              <video class="thumb-video" muted playsinline preload="metadata"
+                     poster="assets\images\itampak_maju_depan_3.png">
+                <source src="assets\videos\drone3n.mp4" type="video/mp4">
+              </video>
+            </div>
+            <span class="thumb-label">Tampak Maju ke Depan</span>
+          </button>
+
+          <!-- Thumb 3 -->
+          <button class="thumb-card"
+                  type="button"
+                  data-src="assets\videos\drone4n.mp4"
+                  data-poster="assets\images\imemutari_4.png">
+            <div class="thumb-video-frame">
+              <video class="thumb-video" muted playsinline preload="metadata"
+                     poster="assets\images\imemutari_4.png">
+                <source src="assets\videos\drone4n.mp4" type="video/mp4">
+              </video>
+            </div>
+            <span class="thumb-label">Memutari</span>
+          </button>
+
+          <!-- Thumb 4 -->
+          <button class="thumb-card"
+                  type="button"
+                  data-src="assets\videos\drone5n.mp4"
+                  data-poster="assets\images\itampak_dari_atas5.png">
+            <div class="thumb-video-frame">
+              <video class="thumb-video" muted playsinline preload="metadata"
+                     poster="assets\images\itampak_dari_atas5.png">
+                <source src="assets\videos\drone5n.mp4" type="video/mp4">
+              </video>
+            </div>
+            <span class="thumb-label">Tampak Lurus dari Atas</span>
+          </button>
+
+          <!-- Thumb 5 -->
+          <button class="thumb-card"
+                  type="button"
+                  data-src="assets\videos\drone6n.mp4"
+                  data-poster="assets\images\imemutar_dari_kiri6.png">
+            <div class="thumb-video-frame">
+              <video class="thumb-video" muted playsinline preload="metadata"
+                     poster="assets\images\imemutar_dari_kiri6.png">
+                <source src="assets\videos\drone6n.mp4" type="video/mp4">
+              </video>
+            </div>
+            <span class="thumb-label">Putar dari Kiri</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- KETERANGAN -->
+      <section class="desc-section">
+        <h2>Keterangan</h2>
+        <p>
+          Video drone ini digunakan untuk mendukung pembelajaran etnomatematika:
+          mengamati proporsi, simetri, dan struktur geometri pada rumah adat Bugis
+          <strong>Bola Ugi</strong>. Siswa dapat menghubungkan bentuk tiang, atap,
+          tangga, dan ruang dengan konsep geometri yang dipelajari di kelas.
+        </p>
+      </section>
     </section>
+  </main>
 
-<script>
-function changeVideo(src) {
-    const video = document.getElementById("mainVideo");
-    video.src = src;
-    video.play();
-}
-</script>
+  <footer>
+    © 2025 · Video Drone Rumah Adat Bugis · Dibangun untuk pembelajaran etnomatematika · Tim Pengembang Rumah Adat Bugis
+  </footer>
 
+  <!-- Script kecil untuk mengganti video utama ketika thumb diklik -->
+  <script>
+    const mainVideo = document.getElementById('mainVideo');
+    const thumbButtons = document.querySelectorAll('.thumb-card');
+
+    thumbButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const src = btn.getAttribute('data-src');
+        const poster = btn.getAttribute('data-poster');
+
+        // Ganti source utama
+        mainVideo.pause();
+        mainVideo.setAttribute('poster', poster || '');
+        mainVideo.querySelector('source').setAttribute('src', src);
+        mainVideo.load();
+        mainVideo.play().catch(() => { /* di iOS kadang butuh tap lagi */ });
+      });
+    });
+  </script>
 </body>
 </html>
